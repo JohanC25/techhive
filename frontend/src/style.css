@@ -11,6 +11,14 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* 🎨 Variables personalizadas para MODO OSCURO (activas por defecto) */
+  --bg-color: #121212;           /* Fondo general */
+  --form-bg: #1e1e1e;            /* Fondo del formulario o cajas */
+  --text-color: #f2f2f2;         /* Texto principal */
+  --input-bg: #2c2c2c;           /* Fondo de los inputs */
+  --input-border: #555;          /* Borde de los inputs */
+  --placeholder-color: #aaa;     /* Color del placeholder */
 }
 
 a {
@@ -28,6 +36,10 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+
+  /* 🌗 Adaptar fondo y color de texto usando variables */
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
 h1 {
@@ -65,14 +77,25 @@ button:focus-visible {
   text-align: center;
 }
 
+/* ☀️ Variables personalizadas para MODO CLARO */
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
+
+    /* 🔁 Sobrescribimos las variables para modo claro */
+    --bg-color: #ffffff;         /* Fondo principal claro */
+    --form-bg: #f2f2f2;          /* Fondo del formulario */
+    --text-color: #213547;       /* Color de texto oscuro */
+    --input-bg: #ffffff;         /* Fondo blanco para inputs */
+    --input-border: #ccc;        /* Borde gris claro para inputs */
+    --placeholder-color: #888;   /* Placeholder más suave */
   }
+
   a:hover {
     color: #747bff;
   }
+
   button {
     background-color: #f9f9f9;
   }
