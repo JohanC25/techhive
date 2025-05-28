@@ -5,14 +5,16 @@ from users.models import User
 
 
 class EquipoSerializer(serializers.ModelSerializer):
-    cliente_id = serializers.PrimaryKeyRelatedField(
-        queryset=User.objects.all(), write_only=True
-    )
+    cliente_id = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), write_only=True)
     cliente = serializers.StringRelatedField(read_only=True)
 
     class Meta:
         model = Equipo
         fields = '__all__'
+
+    def create(self, validated_data):
+        cliente = validated_data.pop('cliente_id')
+        return Equipo.objects.create(cliente=cliente, **validated_data)
 
 class RecepcionEquipoSerializer(serializers.ModelSerializer):
     cliente = UserSerializer(read_only=True)
