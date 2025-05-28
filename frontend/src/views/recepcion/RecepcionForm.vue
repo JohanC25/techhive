@@ -21,7 +21,7 @@
         <input v-model="nuevoCliente.apellido" class="form-input" placeholder="Apellido" />
         <label>Celular:</label>
         <input v-model="nuevoCliente.celular" class="form-input" placeholder="Celular" />
-        <label>Convencional:</label>
+        <label>Convencional (OPCIONAL):</label>
         <input v-model="nuevoCliente.convencional" class="form-input" placeholder="Teléfono convencional (opcional)" />
         <label>Email:</label>
         <input v-model="nuevoCliente.email" type="email" class="form-input" placeholder="Correo electrónico" />
@@ -47,11 +47,11 @@
 
       <div v-if="equipoSeleccionado === 'nuevo'" class="form-group">
         <h4>Nuevo equipo</h4>
-        <label>Marca:</label>
+        <label>Marca (OPCIONAL):</label>
         <input v-model="nuevoEquipo.marca" class="form-input" placeholder="Marca" />
-        <label>Modelo:</label>
+        <label>Modelo (OPCIONAL):</label>
         <input v-model="nuevoEquipo.modelo" class="form-input" placeholder="Modelo" />
-        <label>Observaciones:</label>
+        <label>Observaciones (OPCIONAL):</label>
         <textarea v-model="nuevoEquipo.observaciones" class="form-input" placeholder="Observaciones"></textarea>
       </div>
 
@@ -68,7 +68,7 @@
         </select>
         <label>Costo:</label>
         <input v-model.number="form.costo" type="number" class="form-input" placeholder="Costo" />
-        <label>Observaciones:</label>
+        <label>Observaciones (OPCIONAL):</label>
         <textarea v-model="form.observaciones" class="form-input" placeholder="Observaciones"></textarea>
         <button @click="registrarRecepcion" class="form-button">Registrar Recepción</button>
       </div>
