@@ -19,6 +19,10 @@ import UsuarioList from '@/views/usuarios/UsuarioList.vue'
 import UsuarioCreate from '@/views/usuarios/UsuarioCreate.vue'
 import UsuarioEdit from '@/views/usuarios/UsuarioEdit.vue'
 
+
+import RegistroVenta from '@/views/ventas_ia/RegistroVenta.vue'
+
+
 const routes = [
   { path: '/login', name: 'Login', component: Login },
 
@@ -38,6 +42,9 @@ const routes = [
       { path: 'usuarios', name: 'UsuarioList', component: UsuarioList },
       { path: 'usuarios/nuevo', name: 'UsuarioCreate', component: UsuarioCreate },
       { path: 'usuarios/editar/:id', name: 'UsuarioEdit', component: UsuarioEdit, props: true },
+
+      // Ventas AI
+      { path: 'ventas-ai', name: 'VentasAI', component: RegistroVenta },
     ]
   },
 

@@ -10,6 +10,9 @@ import 'primeicons/primeicons.css'
 import Button from 'primevue/button'
 import DataTable from 'primevue/datatable'
 import Column from 'primevue/column'
+import InputText from 'primevue/inputtext'
+import InputNumber from 'primevue/inputnumber'
+import DatePicker from 'primevue/datepicker'
 
 // ✅ Pinia
 import { createPinia } from 'pinia'
@@ -31,6 +34,9 @@ app.use(router)
 app.component('Button', Button)
 app.component('DataTable', DataTable)
 app.component('Column', Column)
+app.component('InputText', InputText)
+app.component('InputNumber', InputNumber)
+app.component('DatePicker', DatePicker)
 
 // Montar app
 app.mount('#app')

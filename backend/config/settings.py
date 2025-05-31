@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'utils',
     'inventario',
     'recepcion',
+    'ventas_ai',
 ]
 
 MIDDLEWARE = [

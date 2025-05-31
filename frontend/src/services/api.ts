@@ -29,9 +29,7 @@ api.interceptors.response.use(
 
       if (refreshToken) {
         try {
-          const res = await axios.post('http://localhost:8000/api/auth/refresh/', {
-            refresh: refreshToken
-          })
+          const res = await api.post('/auth/refresh/', { refresh: refreshToken })
 
           const newAccess = res.data.access
           localStorage.setItem('access', newAccess)
