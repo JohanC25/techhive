@@ -24,6 +24,8 @@
           currency="USD"
           locale="en-US"
           class="w-full"
+          :minFractionDigits="2"
+          :placeholder="'Monto...'"
           input-class="w-full"
           required
         />
@@ -36,6 +38,16 @@
           class="w-full"
           required
         />
+      </div>
+
+      <div class="mb-4 flex items-center">
+        <Checkbox
+          v-model="form.pagado_deuna"
+          binary
+          input-id="pagadoDeuna"
+          class="mr-2"
+        />
+        <label for="pagadoDeuna" class="font-medium">Pagado con Deuna</label>
       </div>
 
       <Button label="Guardar Venta" icon="pi pi-save" class="w-full mb-2" type="submit" />
@@ -59,6 +71,11 @@
         <Column field="fecha_venta" header="Fecha" />
         <Column field="monto_venta" header="Monto" :body="montoBodyTemplate" />
         <Column field="descripcion" header="Descripción" />
+        <Column field="pagado_deuna" header="Pagado Deuna">
+          <template #body="slotProps">
+            <span v-html="pagadoDeunaBodyTemplate(slotProps.data)"></span>
+          </template>
+        </Column>
       </DataTable>
     </div>
   </div>
@@ -73,12 +90,14 @@ interface Venta {
   fecha_venta: string
   monto_venta: number
   descripcion: string
+  pagado_deuna: boolean
 }
 
 const form = ref({
   fecha_venta: new Date(),
-  monto_venta: 0,
+  monto_venta: null,
   descripcion: '',
+  pagado_deuna: false,
 })
 
 const mensaje = ref('')
@@ -110,7 +129,7 @@ const registrarVenta = async () => {
     }
     await api.post('ventas_ai/ventas/', payload)
     mensaje.value = 'Venta registrada correctamente'
-    form.value = { fecha_venta: new Date(), monto_venta: 0, descripcion: '' }
+    form.value = { fecha_venta: new Date(), monto_venta: null, descripcion: '', pagado_deuna: false}
     await obtenerVentas()
   } catch (error) {
     console.error('Error al registrar la venta:', error)
@@ -121,6 +140,12 @@ const registrarVenta = async () => {
 const montoBodyTemplate = (row: Venta) => {
   return `$${row.monto_venta.toFixed(2)}`
 }
+
+const pagadoDeunaBodyTemplate = (row: Venta) => {
+  return row.pagado_deuna
+    ? '<span class="text-green-600 font-semibold">✔ Sí</span>'
+    : '<span class="text-red-500 font-semibold">✘ No</span>';
+};
 
 onMounted(() => {
   obtenerVentas()

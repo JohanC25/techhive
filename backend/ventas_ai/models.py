@@ -7,6 +7,7 @@ class RegistroVenta(models.Model):
     descripcion = models.CharField(max_length=255)
     es_feriado = models.BooleanField(default=False)
     es_fin_de_semana = models.BooleanField(default=False)
+    pagado_deuna = models.BooleanField(default=False)
 
     def save(self, *args, **kwargs):
         # Detectar si es fin de semana

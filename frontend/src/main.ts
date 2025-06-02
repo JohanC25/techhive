@@ -13,6 +13,8 @@ import Column from 'primevue/column'
 import InputText from 'primevue/inputtext'
 import InputNumber from 'primevue/inputnumber'
 import DatePicker from 'primevue/datepicker'
+import Checkbox from 'primevue/checkbox';
+import CheckboxGroup from 'primevue/checkboxgroup';
 
 // ✅ Pinia
 import { createPinia } from 'pinia'
@@ -37,6 +39,8 @@ app.component('Column', Column)
 app.component('InputText', InputText)
 app.component('InputNumber', InputNumber)
 app.component('DatePicker', DatePicker)
+app.component('Checkbox', Checkbox)
+app.component('CheckboxGroup', CheckboxGroup)
 
 // Montar app
 app.mount('#app')
