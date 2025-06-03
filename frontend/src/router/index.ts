@@ -19,8 +19,12 @@ import UsuarioList from '@/views/usuarios/UsuarioList.vue'
 import UsuarioCreate from '@/views/usuarios/UsuarioCreate.vue'
 import UsuarioEdit from '@/views/usuarios/UsuarioEdit.vue'
 
-
+//Ventas IA
 import RegistroVenta from '@/views/ventas_ia/RegistroVenta.vue'
+
+//Reportes
+import Reportes from '@/views/reportes/Reportes.vue'
+import Reportes_Ventas from '@/views/reportes/ReportesVentas.vue'
 
 
 const routes = [
@@ -45,6 +49,10 @@ const routes = [
 
       // Ventas AI
       { path: 'ventas-ai', name: 'VentasAI', component: RegistroVenta },
+
+      //Reportes
+      { path: 'reportes', name: 'Reportes', component: Reportes },
+      { path: 'reportes/ventas', name: 'Reporte_Ventas', component: Reportes_Ventas }
     ]
   },
 

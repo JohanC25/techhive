@@ -76,6 +76,13 @@
             <span v-html="pagadoDeunaBodyTemplate(slotProps.data)"></span>
           </template>
         </Column>
+        <Column field="monto_venta" header="Monto" :body="montoBodyTemplate">
+          <template #footer>
+            <span class="font-bold text-green-700">
+              <b>Total: ${{ totalVentas.toFixed(2) }}</b>
+            </span>
+          </template>
+        </Column>
       </DataTable>
     </div>
   </div>
@@ -93,6 +100,11 @@ interface Venta {
   pagado_deuna: boolean
 }
 
+interface RespuestaVentas {
+  ventas: Venta[]
+  total: number
+}
+
 const form = ref({
   fecha_venta: new Date(),
   monto_venta: null,
@@ -102,6 +114,7 @@ const form = ref({
 
 const mensaje = ref('')
 const ventas = ref<Venta[]>([])
+const totalVentas = ref<number>(0)
 
 const obtenerVentas = async () => {
   try {
@@ -112,10 +125,9 @@ const obtenerVentas = async () => {
       String(now.getMonth() + 1).padStart(2, '0') +
       '-' +
       String(now.getDate()).padStart(2, '0');
-    const response = await api.get('ventas_ai/ventas/', { params: { fecha: hoy } })
-    console.log('Fecha enviada:', hoy)
-    console.log('Ventas recibidas:', response.data)
-    ventas.value = response.data
+    const response = await api.get<RespuestaVentas>('ventas_ai/ventas/', { params: { fecha: hoy } })
+    ventas.value = response.data.ventas || []
+    totalVentas.value = response.data.total || 0
   } catch (error) {
     console.error('Error al cargar las ventas:', error)
   }
