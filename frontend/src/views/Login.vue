@@ -13,10 +13,10 @@
           <input v-model="email" type="email" placeholder="Correo electrónico" required />
           <input v-model="password" type="password" placeholder="Contraseña" required />
 
-          <label class="remember">
+          <!--<label class="remember">
             <input type="checkbox" v-model="rememberMe" />
             Mantenerme conectado
-          </label>
+          </label>-->
 
           <button type="submit" :disabled="loading">
             <span v-if="loading">🔄 Cargando...</span>

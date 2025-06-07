@@ -33,6 +33,7 @@ const items = computed(() => {
         { label: 'Recepción', icon: 'pi pi-inbox', command: () => router.push('/recepcion') },
         { label: 'Mis Reparaciones', icon: 'pi pi-wrench', command: () => router.push('/reparaciones') },
         { label: 'Ventas AI', icon: 'pi pi-dollar', command: () => router.push('/ventas-ai') },
+        { label: 'Reportes', icon: 'pi pi-chart-line', command: () => router.push('/reportes') },
         { label: 'Perfil', icon: 'pi pi-user', command: () => router.push('/perfil') },
         { label: 'Cerrar Sesión', icon: 'pi pi-sign-out', command: () => logout() },
       ]
